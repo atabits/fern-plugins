@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atabits.github.io/fern-plugins/plugin-descriptor.schema.json",
+  "title": "Fern Plugin Registry Descriptor",
+  "description": "Metadata descriptor placed at plugins/<plugin-id>.json to publish or update a plugin in the official Fern plugin registry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "source_url"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$",
+      "description": "Plugin identifier matching the descriptor filename (plugins/<id>.json) and manifest.json id."
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/\\s]+$",
+      "description": "Release version matching manifest.json version (for example \"1.0.0\")."
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Public HTTPS URL to the plugin archive (.zip)."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Optional lowercase 64-character hex SHA-256 checksum of the source archive."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Optional public HTTPS URL for the plugin repository or documentation."
+    },
+    "min_fern_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional minimum Fern desktop version required by this plugin."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Optional discovery tags displayed in Fern's plugin catalog."
+    }
+  }
+}
