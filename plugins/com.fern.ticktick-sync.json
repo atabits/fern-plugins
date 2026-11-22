@@ -1,0 +1,9 @@
+{
+  "id": "com.fern.ticktick-sync",
+  "version": "0.1.0",
+  "source_url": "https://github.com/atabits/fern-ticktick-sync/releases/download/v0.1.0/plugin.zip",
+  "sha256": "eb9ec70a079ccf2147b9773b59b5ff91191e00d9bda6cb7dc38407eae16579ac",
+  "homepage": "https://github.com/atabits/fern-ticktick-sync",
+  "min_fern_version": "0.2.0",
+  "tags": ["sync", "ticktick", "oauth"]
+}
