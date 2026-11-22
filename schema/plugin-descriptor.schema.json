@@ -5,7 +5,7 @@
   "description": "Metadata descriptor placed at plugins/<plugin-id>.json to publish or update a plugin in the official Fern plugin registry.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "version", "source_url"],
+  "required": ["id", "version", "source_url", "sha256"],
   "properties": {
     "id": {
       "type": "string",
@@ -15,8 +15,9 @@
     "version": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^[^/\\s]+$",
-      "description": "Release version matching manifest.json version (for example \"1.0.0\")."
+      "maxLength": 64,
+      "pattern": "^[0-9A-Za-z](?:\\.?[0-9A-Za-z_+-])*\\.?$",
+      "description": "Release version matching manifest.json version (for example \"1.0.0\"), no '..' or URL-unsafe characters."
     },
     "source_url": {
       "type": "string",
@@ -27,7 +28,7 @@
     "sha256": {
       "type": "string",
       "pattern": "^[0-9a-f]{64}$",
-      "description": "Optional lowercase 64-character hex SHA-256 checksum of the source archive."
+      "description": "Required lowercase 64-character hex SHA-256 checksum of the source archive."
     },
     "homepage": {
       "type": "string",
